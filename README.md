@@ -617,6 +617,8 @@ Los puntos **verdes (`+`)** representan las predicciones del modelo y los puntos
 QualityofWater_PythonLab/
 ├── README.md                    ← Este documento
 ├── Clean_ML_Water.ipynb         ← Cuaderno Jupyter con todo el pipeline
+├── waterquality.ipynb           ← Archivo de Datos para la primera parte del pipeline
+├── Indian_States.zip           ← Comprimido que contiene el Archivo de Datos para la segunda parte del pipeline
 └── Results/                     ← Capturas de pantalla de cada celda ejecutada
     ├── 1.png  → Sesión Spark
     ├── 2.png  → Carga desde el Cluster + show(5)
