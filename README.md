@@ -26,7 +26,7 @@
 
 ## 1. Presentación y contexto del proyecto
 
-El presente trabajo busca **predecir el Índice de Calidad del Agua (Water Quality Index — WQI)** de los ríos de la India a partir de mediciones fisicoquímicas y bacteriológicas tomadas por la autoridad ambiental oficial del país (RiverIndia). Se construye un *pipeline* de procesamiento de datos a gran escala apoyado en **Apache Spark** sobre un clúster Hadoop/HDFS, y un **modelo de Deep Learning** implementado en **Keras (TensorFlow)** que aprende a estimar el WQI a partir de los rangos de calidad de cada parámetro.
+El presente trabajo busca **predecir el Índice de Calidad del Agua (Water Quality Index — WQI)** de los ríos de la India a partir de mediciones fisicoquímicas y bacteriológicas tomadas por la autoridad ambiental oficial del país (RiverIndia). Se construye un *pipeline* de procesamiento de datos a gran escala apoyado en **Apache Spark** sobre un clúster de procesamiento, y un **modelo de Deep Learning** implementado en **Keras (TensorFlow)** que aprende a estimar el WQI a partir de los rangos de calidad de cada parámetro.
 
 El flujo metodológico es el siguiente:
 
