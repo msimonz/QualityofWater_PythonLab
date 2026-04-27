@@ -1,6 +1,6 @@
 # Predicción de la Calidad del Agua de los Ríos de la India usando Keras y Apache Spark
 
-> **2do Examen Parcial — Procesamiento de Datos a Gran Escala (28/04/2026)**
+> **2do Examen Parcial — Procesamiento de Datos a Gran Escala (27/04/2026)**
 > Pontificia Universidad Javeriana — Ingeniería de Sistemas, Octavo Semestre
 
 ---
