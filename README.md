@@ -2,7 +2,6 @@
 
 > **2do Examen Parcial — Procesamiento de Datos a Gran Escala (28/04/2026)**
 > Pontificia Universidad Javeriana — Ingeniería de Sistemas, Octavo Semestre
-> Profesor evaluador: rúbrica con 7 criterios (Total 110%)
 
 ---
 
@@ -11,7 +10,7 @@
 1. [Presentación y contexto del proyecto](#1-presentación-y-contexto-del-proyecto)
 2. [Tecnologías y entorno de ejecución](#2-tecnologías-y-entorno-de-ejecución)
 3. [Descripción del dataset](#3-descripción-del-dataset)
-4. [Carga de datos desde HDFS](#4-carga-de-datos-desde-hdfs)
+4. [Carga de datos desde Carpeta Compartida del Cluster "/Almacen/"](#4-carga-de-datos-desde-carpeta-compartida-del-cluster-almacen)
 5. [Exploración y preparación de datos](#5-exploración-y-preparación-de-datos)
 6. [Gráficos y análisis exploratorio](#6-gráficos-y-análisis-exploratorio)
 7. [Cálculo del Índice de Calidad del Agua (WQI)](#7-cálculo-del-índice-de-calidad-del-agua-wqi)
@@ -32,7 +31,7 @@ El presente trabajo busca **predecir el Índice de Calidad del Agua (Water Quali
 El flujo metodológico es el siguiente:
 
 ```
-HDFS (waterquality.csv)
+File (waterquality.csv)
         ↓
 Spark Session  →  Limpieza / Casting  →  Análisis estadístico
         ↓
@@ -63,7 +62,7 @@ El nombre de la aplicación registrada en el clúster es `Calidad_Agua_Marquez` 
 |---|---|
 | Lenguaje | Python 3 (kernel ipykernel) |
 | Procesamiento distribuido | Apache Spark 3.5.0 (PySpark) |
-| Almacenamiento | Hadoop HDFS (`hdfs://10.195.34.34:9000/csv/waterquality.csv`) |
+| Almacenamiento | (`/Almacen/waterquality.csv`) |
 | Manipulación de datos | pandas, numpy |
 | Visualización | matplotlib, seaborn, pylab |
 | Geoespacial | GeoPandas + shapefiles `Indian_States.shp` |
@@ -111,14 +110,14 @@ El archivo `waterquality.csv` contiene **534 registros** (uno por estación de m
 
 ---
 
-## 4. Carga de datos desde HDFS
+## 4. Carga de datos desde Carpeta Compartida del Cluster "/Almacen/"
 
-Los datos se leen directamente desde el clúster Hadoop con el conector CSV de Spark:
+Los datos se leen directamente desde el clúster con el conector CSV de Spark:
 
 ```python
 df00 = sparkS.read.format("csv") \
        .option("header", "true") \
-       .load("hdfs://10.195.34.34:9000/csv/waterquality.csv")
+       .load("/Almacen/waterquality.csv")
 df00.show(5)
 ```
 
@@ -573,7 +572,7 @@ Los puntos **verdes (`+`)** representan las predicciones del modelo y los puntos
 
 ### 12.1 Conclusiones técnicas
 
-- Se construyó con éxito un **pipeline distribuido** que carga datos desde HDFS, los limpia con PySpark, calcula el WQI con UDFs encadenadas (`F.when().when().otherwise()`) y entrena un modelo Keras Sequential — todo en un mismo cuaderno.
+- Se construyó con éxito un **pipeline distribuido** que carga datos desde el Cluster, los limpia con PySpark, calcula el WQI con UDFs encadenadas (`F.when().when().otherwise()`) y entrena un modelo Keras Sequential — todo en un mismo cuaderno.
 - La **arquitectura `6 → 350 → 350 → 350 → 1`** con ReLU/Adam/MSE resulta más que suficiente para el problema; podría reducirse drásticamente sin pérdida de exactitud (un modelo de 1 capa con 32 neuronas alcanzaría resultados similares).
 - El uso conjunto de **Spark + Pandas + GeoPandas** demuestra el patrón típico de "*big-data preprocessing → small-data modeling*": Spark hace el *heavy lifting* y los datos finales (≪ 1 MB) viajan a pandas/keras para entrenamiento.
 
@@ -620,7 +619,7 @@ QualityofWater_PythonLab/
 ├── Clean_ML_Water.ipynb         ← Cuaderno Jupyter con todo el pipeline
 └── Results/                     ← Capturas de pantalla de cada celda ejecutada
     ├── 1.png  → Sesión Spark
-    ├── 2.png  → Carga HDFS + show(5)
+    ├── 2.png  → Carga desde el Cluster + show(5)
     ├── 3.png  → df00.columns
     ├── 4-6.png → Estadísticas describe()
     ├── 7-8.png → Inspección de nulos
