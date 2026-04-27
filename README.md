@@ -644,19 +644,4 @@ QualityofWater_PythonLab/
 
 ---
 
-### Cumplimiento de la rúbrica del 2do Examen Parcial (28/04/2026)
-
-| Criterio | Peso | Sección del README que lo cubre |
-|---|---|---|
-| Presentación / Documentación | 15% | §1, §2, §14 |
-| Gráficos / Análisis | 15% | §6, §8 (mapa + histograma) |
-| Modelos Keras | 15% | §9 (arquitectura, compilación, entrenamiento) |
-| Comparativa / Métricas | 15% | §10 |
-| Análisis de Resultados | 20% | §11 |
-| Conclusiones / Observaciones / Referencias | 20% | §12, §13 |
-| Repo (+) | 10% | Estructura completa, todas las imágenes embebidas, README en formato profesional |
-| **Total** | **110%** | |
-
----
-
 *Autor: Simón — Pontificia Universidad Javeriana — Procesamiento de Datos a Gran Escala — 2026-04-26*
